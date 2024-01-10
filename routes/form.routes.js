@@ -29,6 +29,7 @@ formRouter.get("/get-form", async (req, res) => {
 
 formRouter.post("/add-form", upload.single("file"), async (req, res) => {
   const { name, age, address } = req.body;
+  console.log(req.file.filename)
   try {
     const newFormData = new FormModel({
       name,
