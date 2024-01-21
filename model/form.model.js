@@ -4,7 +4,8 @@ const formSchema = mongoose.Schema({
   name: String,
   age: Number,
   address: String,
-  photo: String
+  photo: String,
+  number:Number
 });
 
 const FormModel = mongoose.model("form", formSchema);

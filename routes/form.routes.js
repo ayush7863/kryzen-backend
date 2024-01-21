@@ -5,7 +5,7 @@ const path = require("path");
 
 const formRouter = express.Router();
 
-const storage = multer.diskStorage({
+const storage = multer.diskStorage({ 
   destination: (req, file, cb) => {
     cb(null, "public/Images");
   },
@@ -28,7 +28,7 @@ formRouter.get("/get-form", async (req, res) => {
 });
 
 formRouter.post("/add-form", upload.single("file"), async (req, res) => {
-  const { name, age, address } = req.body;
+  const { name, age, address,number } = req.body;
   console.log(req.file.filename)
   try {
     const newFormData = new FormModel({
@@ -36,6 +36,7 @@ formRouter.post("/add-form", upload.single("file"), async (req, res) => {
       age,
       address,
       photo: req.file.filename,
+      number
     });
 
     await newFormData.save();
